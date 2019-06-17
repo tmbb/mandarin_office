@@ -44,8 +44,7 @@ defmodule MandarinOffice.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:faker, "~> 0.12"},
-      {:mandarin, path: "../../mandarin"},
-      {:forage, path: "../../forage", override: true}
+      {:mandarin, "~> 0.3"}
     ]
   end
 
