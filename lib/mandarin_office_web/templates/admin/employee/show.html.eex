@@ -1,0 +1,67 @@
+<section class="content-header">
+  <h1>
+    Show Employee
+    <small>Employee (Employee ID: <%= @employee.id %>)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Employees</a></li>
+    <li class="active">show</li>
+  </ol>
+</section>
+
+<section class="content container-fluid">
+  <div class="box box-primary with-border">
+    <div class="box-body">
+      <ul>
+      
+        <li>
+          <strong>Full name:</strong>
+          <%= @employee.full_name %>
+        </li>
+      
+        <li>
+          <strong>Address:</strong>
+          <%= @employee.address %>
+        </li>
+      
+        <li>
+          <strong>Fiscal number:</strong>
+          <%= @employee.fiscal_number %>
+        </li>
+      
+        <li>
+          <strong>Employee number:</strong>
+          <%= @employee.employee_number %>
+        </li>
+      
+        <li>
+          <strong>Begin date:</strong>
+          <%= @employee.begin_date %>
+        </li>
+      
+        <li>
+          <strong>End date:</strong>
+          <%= @employee.end_date %>
+        </li>
+      
+        <li>
+          <strong>Department:</strong>
+          <%= forage_display(@employee.department) %>
+        </li>
+      
+        <li>
+          <strong>Function:</strong>
+          <%= forage_display(@employee.function) %>
+        </li>
+      
+      </ul>
+    </div>
+    <div class="box-footer">
+      <% edit_link_content = [content_tag(:i, "", class: "fa fa-edit"), " Edit"] %>
+      <% back_link_content = [content_tag(:i, "", class: "fa fa-arrow-left"), " Back"]  %>
+      <span><%= link edit_link_content, to: Routes.admin_employee_path(@conn, :edit, @employee), class: "btn btn-default" %></span>
+      <span><%= link back_link_content, to: Routes.admin_employee_path(@conn, :index), class: "btn btn-default"  %></span>
+  </div>
+</section>
+
+

@@ -1,0 +1,56 @@
+<div class="panel box box-primary">
+  <div class="box-header with-border">
+    <h4 class="box-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFilters">
+        Search filters
+      </a>
+    </h4>
+  </div>
+  <div id="collapseFilters" class="panel-collapse">
+    <div class="box-body">
+      <%= admin_employee_search_form_for @conn, [], fn f -> %>
+
+        <%= forage_horizontal_form_group :full_name do %>
+          <%= forage_text_filter(f, :full_name) %>
+        <% end %>
+
+        <%= forage_horizontal_form_group :address do %>
+          <%= forage_text_filter(f, :address) %>
+        <% end %>
+
+        <%= forage_horizontal_form_group :fiscal_number do %>
+          <%= forage_text_filter(f, :fiscal_number) %>
+        <% end %>
+
+        <%= forage_horizontal_form_group :employee_number do %>
+          <%= forage_numeric_filter(f, :employee_number) %>
+        <% end %>
+
+        <%= forage_horizontal_form_group :begin_date do %>
+          <%= forage_date_filter(f, :begin_date) %>
+        <% end %>
+
+        <%= forage_horizontal_form_group :end_date do %>
+          <%= forage_date_filter(f, :end_date) %>
+        <% end %>
+
+        <%= forage_horizontal_form_group :department do %>
+          <%= forage_select_filter f, :department,
+                path: Routes.admin_department_path(@conn, :select),
+                remote_field: Department.select_search_field() %>
+        <% end %>
+
+        <%= forage_horizontal_form_group :function do %>
+          <%= forage_select_filter f, :function,
+                path: Routes.admin_function_path(@conn, :select),
+                remote_field: Function.select_search_field() %>
+        <% end %>
+
+        <div class="col-sm-10 col-sm-offset-2">
+          <% search_button_content = [content_tag(:i, "", class: "fa fa-search"), " Search"] %>
+          <%= submit search_button_content, class: "btn btn-default pull-right" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

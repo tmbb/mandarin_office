@@ -1,0 +1,32 @@
+<section class="content-header">
+  <h1>
+    Show Function
+    <small>Function (Function ID: <%= @function.id %>)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Functions</a></li>
+    <li class="active">show</li>
+  </ol>
+</section>
+
+<section class="content container-fluid">
+  <div class="box box-primary with-border">
+    <div class="box-body">
+      <ul>
+      
+        <li>
+          <strong>Name:</strong>
+          <%= @function.name %>
+        </li>
+      
+      </ul>
+    </div>
+    <div class="box-footer">
+      <% edit_link_content = [content_tag(:i, "", class: "fa fa-edit"), " Edit"] %>
+      <% back_link_content = [content_tag(:i, "", class: "fa fa-arrow-left"), " Back"]  %>
+      <span><%= link edit_link_content, to: Routes.admin_function_path(@conn, :edit, @function), class: "btn btn-default" %></span>
+      <span><%= link back_link_content, to: Routes.admin_function_path(@conn, :index), class: "btn btn-default"  %></span>
+  </div>
+</section>
+
+

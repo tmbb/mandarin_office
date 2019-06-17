@@ -1,0 +1,55 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= admin_employee_sort_link(@conn, :full_name, "Full name") %></th>
+      <th><%= admin_employee_sort_link(@conn, :address, "Address") %></th>
+      <th><%= admin_employee_sort_link(@conn, :fiscal_number, "Fiscal number") %></th>
+      <th><%= admin_employee_sort_link(@conn, :employee_number, "Employee number") %></th>
+      <th><%= admin_employee_sort_link(@conn, :begin_date, "Begin date") %></th>
+      <th><%= admin_employee_sort_link(@conn, :end_date, "End date") %></th>
+      <th><%= admin_employee_sort_link(@conn, :inserted_at, "Inserted at") %></th>
+      <th><%= admin_employee_sort_link(@conn, :updated_at, "Updated at") %></th>
+      <th>Department</th>
+      <th>Function</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for employee <- @employees.entries do %>
+    <tr>
+      <td><%= employee.full_name %></td>
+      <td><%= employee.address %></td>
+      <td><%= employee.fiscal_number %></td>
+      <td><%= employee.employee_number %></td>
+      <td><%= employee.begin_date %></td>
+      <td><%= employee.end_date %></td>
+      <td><%= employee.inserted_at %></td>
+      <td><%= employee.updated_at %></td>
+      <td>
+        <a href="<%= Routes.admin_department_path(@conn, :show, employee.department.id) %>">
+          <%= forage_display(employee.department) %>
+        </a>
+      </td>
+      <td>
+        <a href="<%= Routes.admin_function_path(@conn, :show, employee.function.id) %>">
+          <%= forage_display(employee.function) %>
+        </a>
+      </td>
+
+      <td>
+        <%# Icon definitions %>
+        <% show_icon = content_tag(:i, "", class: "fa fa-eye", title: "Show") %>
+        <% edit_icon = content_tag(:i, "", class: "fa fa-edit", title: "Edit") %>
+        <% delete_icon = content_tag(:i, "", class: "fa fa-trash", title: "Delete") %>
+        <%# Links %>
+        <div class="pull-right">
+          <%= link show_icon, to: Routes.admin_employee_path(@conn, :show, employee) %> &nbsp;
+          <%= link edit_icon, to: Routes.admin_employee_path(@conn, :edit, employee) %> &nbsp;
+          <%= link delete_icon, to: Routes.admin_employee_path(@conn, :delete, employee, @conn.params), method: :delete, data: [confirm: "Are you sure?"], class: "text-danger"  %>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

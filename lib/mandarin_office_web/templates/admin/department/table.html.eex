@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= admin_department_sort_link(@conn, :name, "Name") %></th>
+      <th><%= admin_department_sort_link(@conn, :inserted_at, "Inserted at") %></th>
+      <th><%= admin_department_sort_link(@conn, :updated_at, "Updated at") %></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for department <- @departments.entries do %>
+    <tr>
+      <td><%= department.name %></td>
+      <td><%= department.inserted_at %></td>
+      <td><%= department.updated_at %></td>
+
+      <td>
+        <%# Icon definitions %>
+        <% show_icon = content_tag(:i, "", class: "fa fa-eye", title: "Show") %>
+        <% edit_icon = content_tag(:i, "", class: "fa fa-edit", title: "Edit") %>
+        <% delete_icon = content_tag(:i, "", class: "fa fa-trash", title: "Delete") %>
+        <%# Links %>
+        <div class="pull-right">
+          <%= link show_icon, to: Routes.admin_department_path(@conn, :show, department) %> &nbsp;
+          <%= link edit_icon, to: Routes.admin_department_path(@conn, :edit, department) %> &nbsp;
+          <%= link delete_icon, to: Routes.admin_department_path(@conn, :delete, department, @conn.params), method: :delete, data: [confirm: "Are you sure?"], class: "text-danger"  %>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

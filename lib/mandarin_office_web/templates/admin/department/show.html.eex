@@ -1,0 +1,32 @@
+<section class="content-header">
+  <h1>
+    Show Department
+    <small>Department (Department ID: <%= @department.id %>)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Departments</a></li>
+    <li class="active">show</li>
+  </ol>
+</section>
+
+<section class="content container-fluid">
+  <div class="box box-primary with-border">
+    <div class="box-body">
+      <ul>
+      
+        <li>
+          <strong>Name:</strong>
+          <%= @department.name %>
+        </li>
+      
+      </ul>
+    </div>
+    <div class="box-footer">
+      <% edit_link_content = [content_tag(:i, "", class: "fa fa-edit"), " Edit"] %>
+      <% back_link_content = [content_tag(:i, "", class: "fa fa-arrow-left"), " Back"]  %>
+      <span><%= link edit_link_content, to: Routes.admin_department_path(@conn, :edit, @department), class: "btn btn-default" %></span>
+      <span><%= link back_link_content, to: Routes.admin_department_path(@conn, :index), class: "btn btn-default"  %></span>
+  </div>
+</section>
+
+

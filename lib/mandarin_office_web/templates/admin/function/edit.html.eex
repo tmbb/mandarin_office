@@ -1,0 +1,21 @@
+<section class="content-header">
+  <h1>
+    Edit Function
+    <small>Function (Function ID: <%= @function.id %>)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Functions</a></li>
+    <li class="active">edit</li>
+  </ol>
+</section>
+
+<section class="content container-fluid">
+  <div class="box box-primary with-border">
+    <div class="box-body">
+      <%= render "form.html", Map.put(assigns, :action, Routes.admin_function_path(@conn, :update, @function)) %>
+    </div>
+    <div class="box-footer">
+      <% back_link_content = [content_tag(:i, "", class: "fa fa-arrow-left"), " Back"]  %>
+      <span><%= link back_link_content, to: Routes.admin_function_path(@conn, :index), class: "btn btn-default" %></span>
+  </div>
+</section>

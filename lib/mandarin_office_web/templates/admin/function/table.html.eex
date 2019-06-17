@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= admin_function_sort_link(@conn, :name, "Name") %></th>
+      <th><%= admin_function_sort_link(@conn, :inserted_at, "Inserted at") %></th>
+      <th><%= admin_function_sort_link(@conn, :updated_at, "Updated at") %></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for function <- @functions.entries do %>
+    <tr>
+      <td><%= function.name %></td>
+      <td><%= function.inserted_at %></td>
+      <td><%= function.updated_at %></td>
+
+      <td>
+        <%# Icon definitions %>
+        <% show_icon = content_tag(:i, "", class: "fa fa-eye", title: "Show") %>
+        <% edit_icon = content_tag(:i, "", class: "fa fa-edit", title: "Edit") %>
+        <% delete_icon = content_tag(:i, "", class: "fa fa-trash", title: "Delete") %>
+        <%# Links %>
+        <div class="pull-right">
+          <%= link show_icon, to: Routes.admin_function_path(@conn, :show, function) %> &nbsp;
+          <%= link edit_icon, to: Routes.admin_function_path(@conn, :edit, function) %> &nbsp;
+          <%= link delete_icon, to: Routes.admin_function_path(@conn, :delete, function, @conn.params), method: :delete, data: [confirm: "Are you sure?"], class: "text-danger"  %>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

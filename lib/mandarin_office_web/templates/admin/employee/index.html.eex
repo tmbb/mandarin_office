@@ -1,0 +1,31 @@
+<section class="content-header">
+  <h1>
+    Employees
+    <small>(Browse Employees)</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Employees</a></li>
+    <li class="active">index</li>
+  </ol>
+</section>
+
+<section class="content container-fluid">
+  <div class="box box-primary with-border">
+    <div class="box-body">
+      <%# Table %>
+      <%= render "table.html", assigns %>
+      <%# Pagination %>
+      <%= admin_employee_pagination_widget(@conn, @employees, previous: "« Previous", next: "Next »") %>
+    </div>
+
+    <div class="box-footer">
+      <% new_link_content = [content_tag(:i, "", class: "fa fa-plus"), " New"]  %>
+      <span><%= link new_link_content, to: Routes.admin_employee_path(@conn, :new), class: "btn btn-default" %></span>
+    </div>
+  </div>
+
+  <%# Filters %>
+  <div class="box-group">
+    <%= render "filters.html", assigns %>
+  </div>
+</section>
