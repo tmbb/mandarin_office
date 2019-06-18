@@ -11,7 +11,7 @@ Sequence of commands needed to generate this app:
   1. Create a files for a new view and a new layout
 5. Add a `Department` resource: `mix mandarin.gen.html Admin Department departments name:string --binary-id`
 6. Add the routes under the `:admin` scope (using `Mandarin.Router.resources/2`)
-7. Add a `Function` resource: `mix mandarin.gen.html Admin Department departments name:string --binary-id`
+7. Add a `Function` resource: `mix mandarin.gen.html Admin Function functions name:string --binary-id`
 8. Add the routes under the `:admin` scope (using `Mandarin.Router.resources/2`)
 9. Add an `Employee` resource: `mix mandarin.gen.html Admin Employee employees full_name:string address:string fiscal_number:string employee_number:integer department:references:departments function:references:functions begin_date:date end_date:date --binary-id`
 10. Add the routes under the `:admin` scope (using `Mandarin.Router.resources/2`)
